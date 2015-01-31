@@ -9,7 +9,6 @@
 #pragma comment (lib, "SDL2main.lib") //need to LINK 3 libraries
 #pragma comment(lib, "SDL2test.lib") //libraries contain the actual functions we use, header files contain the function info
 
-//std::vector<Object*> Object::allObjects; //constructor for static global in h file
 Object::~Object()
 {
 
@@ -129,10 +128,9 @@ void Object::run()
 
 void Object::updateVelocity() //used to graduate increase velocity, to prevent sudden velocity changes
 {
-	double xtimeMul = 0.008;
-	double ytimeMul = 0.01;
+	double xtimeMul = 0.003; //resistance to movement on x axis
+	double ytimeMul = 0.01;  //resistance to movement on y axis
 	Vector2 differenceVelocity = goalVelocity - actualVelocity; //differnce between target velocity and current
-
 
 	bool xLerp = false;
 	bool yLerp = false;
@@ -288,4 +286,9 @@ void Object::updateDirection()
 	{
 		facingRight = false;
 	}
+}
+
+std::string Object::getID()
+{
+	return ID;
 }

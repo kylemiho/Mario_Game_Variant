@@ -19,7 +19,6 @@ void EventHandler::getEvent()
 	{
 		if (e.type == SDL_QUIT)
 		{
-
 		}
 		if (e.type == SDL_KEYDOWN) //returns which key is pressed and bool value
 		{

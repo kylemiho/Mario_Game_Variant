@@ -21,9 +21,11 @@ protected:
 	std::vector <Object*> deallocateList; //list of objects need to deallocate later
 	std::vector <Sprite*> deallocateList2; //list of sprites need to deallocate later
 	int currentScene; //index to inform the scene manager which scene will currently be running
+	double tileWidth;
 
 	//1-1 level functions
 	void initialize_1_1();
 	void initialize_1_1_cointile(int scene); //only call this in initialize_1_1
 	void initialize_1_1_basictile(int scene);
+	void initialize_1_1_bricktile(int scene);
 };

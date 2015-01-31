@@ -23,6 +23,7 @@ public:
 	virtual void collision(Object *currentObject);
 	bool marioGrounded();
 	int getSceneNumber();
+	void marioCollision(unsigned &index);
 
 protected:
 	Player *player;

@@ -7,6 +7,7 @@
 sceneManager::sceneManager()
 {
 	currentScene = 0;
+	tileWidth = 55.8;
 }
 
 sceneManager:: ~sceneManager() //need to empty sceneList
@@ -35,17 +36,22 @@ void sceneManager::initializeScenes()
 
 void sceneManager::initialize_1_1_cointile(int scene)
 {
+	//initialize coin tile sprite
 	Sprite *coinTile = new Sprite(384, 0, 16, 16);
 	deallocateList2.push_back(coinTile);
-	Object *tempTile = new Object(
-		"Resources/art/tile.png",
-		Vector2(893, 474),
-		0.0f,
-		Vector2(55.8, 55.8),
-		coinTile,
-		"coinTile"
-		);
-	sceneList.at(scene)->addObject(tempTile); //add object to scene 1
+
+	//create first coin tile, then add to scene list
+	Object *tempTile = new Object("Resources/art/tile.png", Vector2(893, 474), 0.0f, Vector2(tileWidth, tileWidth), coinTile, "coinTile");
+	sceneList.at(scene)->addObject(tempTile); 
+
+	Object *tempTile2 = new Object("Resources/art/tile.png", Vector2(893 + tileWidth * 5, 474), 0.0f, Vector2(tileWidth, tileWidth), coinTile, "coinTile");
+	sceneList.at(scene)->addObject(tempTile2);
+
+	Object *tempTile3 = new Object("Resources/art/tile.png", Vector2(893 + tileWidth * 7, 474), 0.0f, Vector2(tileWidth, tileWidth), coinTile, "coinTile");
+	sceneList.at(scene)->addObject(tempTile3);
+
+	Object *tempTile4 = new Object("Resources/art/tile.png", Vector2(893 + tileWidth * 6, 474 - tileWidth * 4), 0.0f, Vector2(tileWidth, tileWidth), coinTile, "coinTile");
+	sceneList.at(scene)->addObject(tempTile4);
 }
 
 void sceneManager::initialize_1_1_basictile(int scene)
@@ -55,9 +61,9 @@ void sceneManager::initialize_1_1_basictile(int scene)
 	{
 		Object *tempTile = new Object(
 			"Resources/art/tile.png",
-			Vector2(i*55.8, 697),
+			Vector2(i*tileWidth, 697),
 			0.0f,
-			Vector2(55.8, 55.8),
+			Vector2(tileWidth,tileWidth),
 			basicTile,
 			"tile"
 			);
@@ -68,15 +74,28 @@ void sceneManager::initialize_1_1_basictile(int scene)
 	{
 		Object *tempTile = new Object(
 			"Resources/art/tile.png",
-			Vector2(i*55.8, 697),
+			Vector2(i*tileWidth, 697),
 			0.0f,
-			Vector2(55.8, 55.8),
+			Vector2(tileWidth, tileWidth),
 			basicTile,
 			"tile"
 			);
 		sceneList.at(scene)->addObject(tempTile);
 	}
 	deallocateList2.push_back(basicTile);
+}
+
+void sceneManager::initialize_1_1_bricktile(int scene)
+{
+	//initialize coin tile sprite
+	Sprite *brickTile = new Sprite(16, 0, 16, 16);
+	deallocateList2.push_back(brickTile);
+
+	//create first coin tile, then add to scene list
+	Object *tempTile = new Object("Resources/art/tile.png", Vector2(1005 + 2*tileWidth, 474), 0.0f, Vector2(tileWidth, tileWidth), brickTile, "brickTile");
+	sceneList.at(scene)->addObject(tempTile);
+
+
 }
 
 void sceneManager::initialize_1_1()
@@ -87,6 +106,7 @@ void sceneManager::initialize_1_1()
 
 	initialize_1_1_cointile(scene);
 	initialize_1_1_basictile(scene);
+	initialize_1_1_bricktile(scene);
 }
 
 void sceneManager::addScene(Scene *scene)

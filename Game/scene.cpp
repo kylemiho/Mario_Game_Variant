@@ -65,7 +65,10 @@ Scene::~Scene()
 	background = NULL;
 	delete player;
 	player = NULL;
-
+	for (unsigned i = 0; i < objectList.size(); ++i)
+	{
+		delete objectList.at(i);
+	}
 }
 
 int Scene::getSceneNumber()
@@ -133,6 +136,17 @@ void Scene::movement(Object *currentObject)
 	currentObject->moveObjectY(currentObject->getActualVelocity().y);
 }
 
+void Scene::marioCollision(unsigned &index)
+{
+	std::string brickTile = "brickTile";
+	if (objectList[index]->getID() == brickTile)
+	{
+		//break brick wall and remove from vector
+		objectList.erase(objectList.begin() + index - 1);
+		delete objectList.at(index);
+	}
+}
+
 void Scene::collision(Object *currentObject)
 {
 	for (unsigned i = 0; i < objectList.size(); ++i)
@@ -144,6 +158,11 @@ void Scene::collision(Object *currentObject)
 				objectList[i]->getPosition().y < currentObject->getPosition().y + currentObject->getScale().y &&
 				objectList[i]->getPosition().y + objectList[i]->getScale().y > currentObject->getPosition().y)
 			{
+				if (currentObject == objectList[1]) //mario collides with an object
+				{
+					//do player collision interactions
+					marioCollision(i);
+				}
 				//check whether to push back x coordinates or y coordinates to prevent units getting stuck on walls/ground
 				if ((objectList[i]->getPosition().x + currentObject->getActualVelocity().x < currentObject->getPosition().x 
 					+ currentObject->getScale().x && objectList[i]->getPosition().x + objectList[i]->getScale().x 

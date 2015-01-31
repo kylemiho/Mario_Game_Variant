@@ -45,6 +45,7 @@ public:
 	const Vector2& getActualVelocity() const;
 	bool getGrounded() const;
 	int getJump() const;
+	std::string getID();
 	void addSprite(SDL_Rect spriteLoc);
 	bool jumpAnimation;
 	virtual void updateState();
@@ -52,9 +53,8 @@ public:
 
 protected:
 
-	int components;	//stores the component bits
+	int components; //stores the component bits
 	int animationState;
-	int index;
 	Scene *scene;
 	SDL_Window *window;
 	std::string filepath;
