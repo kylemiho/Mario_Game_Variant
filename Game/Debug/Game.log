@@ -1,0 +1,20 @@
+﻿  scene.cpp
+c:\users\kyle\documents\visualstudiotest\game\game\scene.cpp(14): error C2084: function 'Scene::Scene(void)' already has a body
+          c:\users\kyle\documents\visualstudiotest\game\game\scene.h(9) : see previous definition of '{ctor}'
+c:\users\kyle\documents\visualstudiotest\game\game\scene.cpp(20): error C2065: 'handler' : undeclared identifier
+c:\users\kyle\documents\visualstudiotest\game\game\scene.cpp(20): error C2228: left of '.isKeyDown' must have class/struct/union
+          type is 'unknown-type'
+c:\users\kyle\documents\visualstudiotest\game\game\scene.cpp(28): error C2065: 'handler' : undeclared identifier
+c:\users\kyle\documents\visualstudiotest\game\game\scene.cpp(28): error C2228: left of '.isKeyDown' must have class/struct/union
+          type is 'unknown-type'
+  Game.cpp
+c:\users\kyle\documents\visualstudiotest\game\game\game.cpp(33): error C2065: 'handler' : undeclared identifier
+c:\users\kyle\documents\visualstudiotest\game\game\game.cpp(33): error C2228: left of '.getEvent' must have class/struct/union
+          type is 'unknown-type'
+  Generating Code...
+  Compiling...
+  globals.cpp
+  Generating Code...
+  Compiling...
+  object.cpp
+  Generating Code...
